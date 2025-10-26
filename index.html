@@ -159,8 +159,8 @@
             padding: 12px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            background: var(--input-bg);
-            color: var(--text-color);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             resize: none;
             font-family: inherit;
         }
@@ -192,6 +192,71 @@
 
         .rating-btn:hover {
             transform: translateY(-2px);
+        }
+
+        /* Warning Modal Styles */
+        .warning-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .warning-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-hover);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .warning-icon {
+            font-size: 3rem;
+            color: #ffa500;
+            margin-bottom: 1rem;
+        }
+
+        .warning-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .warning-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .warning-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .warning-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .warning-outline {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
         }
 
         /* Theme Selection Styles */
@@ -258,6 +323,74 @@
 
         .share-action-btn:active {
             transform: translateY(0);
+        }
+
+        /* Schedule Modal Styles */
+        .schedule-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .schedule-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-hover);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .schedule-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .schedule-option {
+            padding: 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--bg-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .schedule-option:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .schedule-option.active {
+            border-color: var(--primary-color);
+            background: var(--gradient);
+            color: white;
+        }
+
+        .custom-time {
+            margin-top: 15px;
+        }
+
+        .time-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: inherit;
         }
 
         /* Mobile-First Header */
@@ -593,6 +726,15 @@
             gap: 0.75rem;
         }
 
+        .action-buttons-row {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .action-buttons-row .btn {
+            flex: 1;
+        }
+
         .btn {
             padding: 1rem 1.5rem;
             border: none;
@@ -773,156 +915,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             flex-shrink: 0;
-        }
-
-        /* Rating Section */
-        .rating-section {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            text-align: center;
-        }
-
-        .rating-section h3 {
-            font-size: 1.25rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .stars-container {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .star {
-            font-size: 2rem;
-            color: var(--border-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .star:hover {
-            transform: scale(1.2);
-        }
-
-        .star.active {
-            color: #ffd700;
-        }
-
-        .star.active::before {
-            content: '★';
-            position: absolute;
-            color: #ffd700;
-            animation: starPop 0.3s ease;
-        }
-
-        @keyframes starPop {
-            0% { transform: scale(0); opacity: 0; }
-            70% { transform: scale(1.3); opacity: 1; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .percentage-display {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .percentage-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .percentage-bar {
-            width: 30px;
-            height: 4px;
-            background: var(--border-color);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .percentage-fill {
-            height: 100%;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .percentage-text {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-
-        .total-percentage {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .rating-comment {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            resize: vertical;
-            min-height: 80px;
-            margin-bottom: 1rem;
-        }
-
-        .rating-comment:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .char-count {
-            text-align: right;
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .char-count.near-limit {
-            color: #e74c3c;
-        }
-
-        .feedback-message {
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .feedback-submitted {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .feedback-thankyou {
-            background: #cce7ff;
-            color: #004085;
-            border: 1px solid #b3d7ff;
         }
 
         /* Share Type Selection */
@@ -1170,6 +1162,10 @@
                 flex-direction: row;
             }
 
+            .action-buttons-row {
+                flex-direction: row;
+            }
+
             .btn {
                 width: auto;
             }
@@ -1372,14 +1368,26 @@
 
                 <!-- Action Buttons -->
                 <div class="action-buttons">
-                    <button class="btn btn-primary" id="nextVerse">
-                        <i class="fas fa-random"></i>
-                        Next Verse
-                    </button>
-                    <button class="btn btn-secondary" id="shareButton">
-                        <i class="fas fa-share-alt"></i>
-                        Share
-                    </button>
+                    <div class="action-buttons-row">
+                        <button class="btn btn-secondary" id="previousVerse">
+                            <i class="fas fa-arrow-left"></i>
+                            Previous Verse
+                        </button>
+                        <button class="btn btn-primary" id="nextVerse">
+                            <i class="fas fa-arrow-right"></i>
+                            Next Verse
+                        </button>
+                    </div>
+                    <div class="action-buttons-row">
+                        <button class="btn btn-secondary" id="shareButton">
+                            <i class="fas fa-share-alt"></i>
+                            Share
+                        </button>
+                        <button class="btn btn-outline" id="scheduleButton">
+                            <i class="fas fa-clock"></i>
+                            Remind Me
+                        </button>
+                    </div>
                 </div>
             </section>
 
@@ -1469,71 +1477,6 @@
                     <!-- Custom verses will be populated here -->
                 </div>
             </section>
-
-            <!-- Rating Section -->
-            <section class="rating-section">
-                <h3>
-                    <i class="fas fa-star"></i>
-                    Rate VerseCurator
-                </h3>
-                
-                <div class="stars-container" id="starsContainer">
-                    <div class="star" data-rating="1">☆</div>
-                    <div class="star" data-rating="2">☆</div>
-                    <div class="star" data-rating="3">☆</div>
-                    <div class="star" data-rating="4">☆</div>
-                    <div class="star" data-rating="5">☆</div>
-                </div>
-
-                <div class="percentage-display" id="percentageDisplay">
-                    <div class="percentage-item">
-                        <div class="percentage-bar">
-                            <div class="percentage-fill" style="width: 0%"></div>
-                        </div>
-                        <div class="percentage-text">20%</div>
-                    </div>
-                    <div class="percentage-item">
-                        <div class="percentage-bar">
-                            <div class="percentage-fill" style="width: 0%"></div>
-                        </div>
-                        <div class="percentage-text">40%</div>
-                    </div>
-                    <div class="percentage-item">
-                        <div class="percentage-bar">
-                            <div class="percentage-fill" style="width: 0%"></div>
-                        </div>
-                        <div class="percentage-text">60%</div>
-                    </div>
-                    <div class="percentage-item">
-                        <div class="percentage-bar">
-                            <div class="percentage-fill" style="width: 0%"></div>
-                        </div>
-                        <div class="percentage-text">80%</div>
-                    </div>
-                    <div class="percentage-item">
-                        <div class="percentage-bar">
-                            <div class="percentage-fill" style="width: 0%"></div>
-                        </div>
-                        <div class="percentage-text">100%</div>
-                    </div>
-                </div>
-
-                <div class="total-percentage" id="totalPercentage">Total: 0%</div>
-
-                <textarea class="rating-comment" id="ratingComment" 
-                          placeholder="Share your thoughts about VerseCurator (optional, max 200 characters)..."></textarea>
-                <div class="char-count" id="charCount">0/200</div>
-
-                <div id="feedbackMessage" style="display: none;">
-                    <div class="feedback-message feedback-submitted">Submitted</div>
-                    <div class="feedback-message feedback-thankyou">Thank you for your feedback</div>
-                </div>
-
-                <button class="btn btn-primary" id="submitRating" disabled>
-                    <i class="fas fa-paper-plane"></i>
-                    Submit Feedback
-                </button>
-            </section>
         </main>
     </div>
 
@@ -1559,12 +1502,80 @@
             <textarea 
                 class="rating-comment" 
                 placeholder="Optional: Share your feedback..."
-                id="ratingComment"
+                id="ratingCommentInput"
             ></textarea>
             
             <div class="rating-actions">
                 <button class="rating-btn rating-cancel" id="ratingCancel">Cancel</button>
                 <button class="rating-btn rating-submit" id="ratingSubmit">Submit Rating</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Warning Modal -->
+    <div class="warning-modal" id="warningModal">
+        <div class="warning-content">
+            <div class="warning-icon">⚠️</div>
+            <h3>Text Sharing Limitation</h3>
+            <p>Text sharing may not work properly on this platform. We recommend using Image sharing for better results.</p>
+            
+            <div class="warning-actions">
+                <button class="warning-btn warning-primary" id="shareAsImage">Share as Image</button>
+                <button class="warning-btn warning-secondary" id="tryTextAnyway">Try Text Anyway</button>
+                <button class="warning-btn warning-outline" id="cancelShare">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Modal -->
+    <div class="schedule-modal" id="scheduleModal">
+        <div class="schedule-content">
+            <div class="modal-header">
+                <h3>
+                    <i class="fas fa-clock"></i>
+                    Set Reminder
+                </h3>
+                <button class="modal-close" id="closeScheduleModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Choose when to be reminded to share this verse:</p>
+                
+                <div class="schedule-options">
+                    <div class="schedule-option" data-time="morning">
+                        <strong>Morning</strong>
+                        <small>5AM - 12PM</small>
+                    </div>
+                    <div class="schedule-option" data-time="day">
+                        <strong>Day</strong>
+                        <small>12PM - 3PM</small>
+                    </div>
+                    <div class="schedule-option" data-time="afternoon">
+                        <strong>Afternoon</strong>
+                        <small>3PM - 6PM</small>
+                    </div>
+                    <div class="schedule-option" data-time="evening">
+                        <strong>Evening</strong>
+                        <small>6PM - 10PM</small>
+                    </div>
+                    <div class="schedule-option" data-time="night">
+                        <strong>Night</strong>
+                        <small>10PM - 5AM</small>
+                    </div>
+                    <div class="schedule-option" data-time="custom">
+                        <strong>Custom Time</strong>
+                    </div>
+                </div>
+
+                <div class="custom-time" id="customTimeInput" style="display: none;">
+                    <input type="time" class="time-input" id="customTime">
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" id="cancelSchedule">Cancel</button>
+                    <button class="btn btn-primary" id="setReminder">Set Reminder</button>
+                </div>
             </div>
         </div>
     </div>
@@ -1677,6 +1688,8 @@
         class VerseCurator {
             constructor() {
                 this.currentVerse = null;
+                this.verseHistory = []; // Store last 10 verses for previous button
+                this.currentHistoryIndex = -1;
                 this.customVerses = JSON.parse(localStorage.getItem('customVerses')) || [];
                 this.favorites = JSON.parse(localStorage.getItem('favoriteVerses')) || [];
                 this.notes = JSON.parse(localStorage.getItem('verseNotes')) || [];
@@ -1708,9 +1721,11 @@
                 this.ratingSubmitted = false;
                 this.currentShareType = 'text';
 
+                // Warning system
+                this.pendingShareAction = null;
+
                 // Timezone handling
                 this.userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                console.log('User timezone:', this.userTimezone);
 
                 // Initialize managers
                 this.rateButtonManager = new RateButtonManager();
@@ -1763,7 +1778,6 @@
                 this.updateStats();
                 this.loadCustomVerses();
                 this.checkVisitStreak();
-                this.setupRatingSystem();
                 this.setupShareTypeSelection();
                 this.startAutoRotation();
                 
@@ -1776,7 +1790,9 @@
                 
                 // Main actions
                 document.getElementById('nextVerse').addEventListener('click', () => this.displayRandomVerse());
+                document.getElementById('previousVerse').addEventListener('click', () => this.showPreviousVerse());
                 document.getElementById('shareButton').addEventListener('click', () => this.showShareModal());
+                document.getElementById('scheduleButton').addEventListener('click', () => this.showScheduleModal());
                 
                 // Settings changes
                 document.getElementById('translationSelect').addEventListener('change', (e) => this.savePreference('translation', e.target.value));
@@ -1808,11 +1824,30 @@
                 document.getElementById('shareImage').addEventListener('click', () => this.shareVerseImage());
                 document.getElementById('shareDevice').addEventListener('click', () => this.shareViaDevice());
 
+                // Warning modal actions
+                document.getElementById('shareAsImage').addEventListener('click', () => this.handleShareAsImage());
+                document.getElementById('tryTextAnyway').addEventListener('click', () => this.handleTryTextAnyway());
+                document.getElementById('cancelShare').addEventListener('click', () => this.hideWarningModal());
+
+                // Schedule modal actions
+                document.getElementById('closeScheduleModal').addEventListener('click', () => this.hideScheduleModal());
+                document.getElementById('cancelSchedule').addEventListener('click', () => this.hideScheduleModal());
+                document.getElementById('setReminder').addEventListener('click', () => this.setReminder());
+
+                // Schedule options
+                document.querySelectorAll('.schedule-option').forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        this.handleScheduleOptionClick(e.currentTarget);
+                    });
+                });
+
                 // Close modals on outside click
                 window.addEventListener('click', (e) => {
                     if (e.target.classList.contains('modal')) {
                         this.hideShareModal();
                         this.hideNoteModal();
+                        this.hideWarningModal();
+                        this.hideScheduleModal();
                     }
                 });
 
@@ -1835,6 +1870,50 @@
                 document.getElementById('imageTheme').addEventListener('change', () => {
                     this.updateThemePreview();
                 });
+            }
+
+            // Previous Verse Functionality
+            addToHistory(verse) {
+                // Remove duplicates
+                this.verseHistory = this.verseHistory.filter(v => 
+                    !(v.text === verse.text && v.reference === verse.reference)
+                );
+                
+                // Add to beginning of history
+                this.verseHistory.unshift(verse);
+                
+                // Keep only last 10 verses
+                if (this.verseHistory.length > 10) {
+                    this.verseHistory = this.verseHistory.slice(0, 10);
+                }
+                
+                // Reset history index
+                this.currentHistoryIndex = -1;
+            }
+
+            showPreviousVerse() {
+                if (this.verseHistory.length === 0) {
+                    this.showNotification('No previous verses available');
+                    return;
+                }
+                
+                // Move to next verse in history
+                this.currentHistoryIndex++;
+                
+                // If at end of history, loop back to current
+                if (this.currentHistoryIndex >= this.verseHistory.length) {
+                    this.currentHistoryIndex = -1;
+                    this.displayRandomVerse();
+                    return;
+                }
+                
+                // Show verse from history
+                this.currentVerse = this.verseHistory[this.currentHistoryIndex];
+                this.updateVerseDisplay();
+                this.incrementStat('versesViewed');
+                
+                // Update history index display for debugging
+                console.log(`Showing history index: ${this.currentHistoryIndex}`);
             }
 
             // Mode Management
@@ -1957,7 +2036,7 @@
             }
 
             getCurrentTimePeriod() {
-                const hour = new Date().getHours(); // Uses local timezone
+                const hour = new Date().getHours();
                 
                 if (hour >= 5 && hour < 12) return 'morning';
                 if (hour >= 12 && hour < 15) return 'day';
@@ -1992,6 +2071,9 @@
                 
                 const randomIndex = Math.floor(Math.random() * verses.length);
                 this.currentVerse = verses[randomIndex];
+                
+                // Add to history for previous button
+                this.addToHistory({...this.currentVerse});
                 
                 this.updateVerseDisplay();
                 this.updateTimePeriodIndicator();
@@ -2173,135 +2255,6 @@
                 this.showNotification(noteText ? 'Note saved!' : 'Note removed');
             }
 
-            // Rating System
-            setupRatingSystem() {
-                const stars = document.querySelectorAll('.star');
-                const comment = document.getElementById('ratingComment');
-                const charCount = document.getElementById('charCount');
-                const submitBtn = document.getElementById('submitRating');
-
-                stars.forEach(star => {
-                    star.addEventListener('click', () => {
-                        const rating = parseInt(star.dataset.rating);
-                        this.setRating(rating);
-                    });
-
-                    star.addEventListener('mouseenter', (e) => {
-                        const hoverRating = parseInt(e.target.dataset.rating);
-                        this.highlightStars(hoverRating);
-                    });
-                });
-
-                document.getElementById('starsContainer').addEventListener('mouseleave', () => {
-                    this.highlightStars(this.userRating);
-                });
-
-                comment.addEventListener('input', () => {
-                    const length = comment.value.length;
-                    charCount.textContent = `${length}/200`;
-                    
-                    if (length > 190) {
-                        charCount.classList.add('near-limit');
-                    } else {
-                        charCount.classList.remove('near-limit');
-                    }
-                    
-                    if (length > 200) {
-                        comment.value = comment.value.substring(0, 200);
-                        charCount.textContent = '200/200';
-                    }
-                });
-
-                submitBtn.addEventListener('click', () => {
-                    this.submitRating();
-                });
-            }
-
-            setRating(rating) {
-                this.userRating = rating;
-                this.highlightStars(rating);
-                this.updatePercentageDisplay(rating);
-                
-                document.getElementById('submitRating').disabled = false;
-            }
-
-            highlightStars(rating) {
-                const stars = document.querySelectorAll('.star');
-                stars.forEach((star, index) => {
-                    if (index < rating) {
-                        star.classList.add('active');
-                        star.textContent = '★';
-                    } else {
-                        star.classList.remove('active');
-                        star.textContent = '☆';
-                    }
-                });
-            }
-
-            updatePercentageDisplay(rating) {
-                const percentages = [20, 40, 60, 80, 100];
-                const fills = document.querySelectorAll('.percentage-fill');
-                const totalPercentage = document.getElementById('totalPercentage');
-
-                fills.forEach((fill, index) => {
-                    if (index < rating) {
-                        fill.style.width = '100%';
-                    } else {
-                        fill.style.width = '0%';
-                    }
-                });
-
-                const totalPercent = rating > 0 ? percentages[rating - 1] : 0;
-                totalPercentage.textContent = `Total: ${totalPercent}%`;
-            }
-
-            submitRating() {
-                if (this.userRating === 0) return;
-
-                const comment = document.getElementById('ratingComment').value;
-                
-                // Save rating locally
-                const ratings = JSON.parse(localStorage.getItem('appRatings')) || [];
-                ratings.push({
-                    rating: this.userRating,
-                    comment: comment,
-                    timestamp: new Date().toISOString(),
-                    version: '1.0.0'
-                });
-                localStorage.setItem('appRatings', JSON.stringify(ratings));
-
-                // Show success message
-                this.showFeedbackMessage();
-                this.ratingSubmitted = true;
-
-                // Update stats
-                this.incrementStat('ratingsSubmitted');
-
-                // Reset form after delay
-                setTimeout(() => {
-                    this.resetRatingForm();
-                }, 3000);
-            }
-
-            showFeedbackMessage() {
-                const feedbackMessage = document.getElementById('feedbackMessage');
-                feedbackMessage.style.display = 'block';
-
-                // Scroll to feedback message
-                feedbackMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-
-            resetRatingForm() {
-                this.userRating = 0;
-                this.highlightStars(0);
-                this.updatePercentageDisplay(0);
-                document.getElementById('ratingComment').value = '';
-                document.getElementById('charCount').textContent = '0/200';
-                document.getElementById('charCount').classList.remove('near-limit');
-                document.getElementById('submitRating').disabled = true;
-                document.getElementById('feedbackMessage').style.display = 'none';
-            }
-
             // Enhanced Share System
             setupShareTypeSelection() {
                 // Initial setup handled in main event listeners
@@ -2384,6 +2337,67 @@
             shareViaDevice() {
                 if (!this.currentVerse) return;
                 
+                // Show warning for Facebook/Instagram
+                if (this.isProblematicPlatform()) {
+                    this.pendingShareAction = 'device';
+                    this.showWarningModal();
+                    return;
+                }
+                
+                if (navigator.share) {
+                    const { receiverText } = this.getShareText();
+                    navigator.share({
+                        title: 'Daily Bible Verse',
+                        text: receiverText,
+                        url: 'https://mashifmj-prog.github.io/VerseCurator/'
+                    }).then(() => {
+                        this.incrementStat('versesShared');
+                    }).catch(err => {
+                        this.copyVerseToClipboard();
+                    });
+                } else {
+                    this.copyVerseToClipboard();
+                }
+                this.hideShareModal();
+            }
+
+            isProblematicPlatform() {
+                // Detect if user might be sharing to Facebook/Instagram
+                // This is a simple detection - in real implementation, you might use more sophisticated methods
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                return isMobile; // Show warning on mobile where Facebook/Instagram are common
+            }
+
+            // Warning Modal System
+            showWarningModal() {
+                document.getElementById('warningModal').style.display = 'block';
+            }
+
+            hideWarningModal() {
+                document.getElementById('warningModal').style.display = 'none';
+                this.pendingShareAction = null;
+            }
+
+            handleShareAsImage() {
+                this.hideWarningModal();
+                this.hideShareModal();
+                // Switch to image sharing
+                this.showShareModal();
+                this.handleShareTypeChange('image');
+            }
+
+            handleTryTextAnyway() {
+                const action = this.pendingShareAction;
+                this.hideWarningModal();
+                
+                if (action === 'device') {
+                    this.executeDeviceShare();
+                }
+            }
+
+            executeDeviceShare() {
+                if (!this.currentVerse) return;
+                
                 if (navigator.share) {
                     const { receiverText } = this.getShareText();
                     navigator.share({
@@ -2463,6 +2477,103 @@
                     ctx.drawImage(img, 0, 0, previewCanvas.width, previewCanvas.height);
                 };
                 img.src = imageData;
+            }
+
+            // Schedule Sharing System
+            showScheduleModal() {
+                if (!this.currentVerse) return;
+                document.getElementById('scheduleModal').style.display = 'block';
+                // Reset selections
+                document.querySelectorAll('.schedule-option').forEach(opt => opt.classList.remove('active'));
+                document.getElementById('customTimeInput').style.display = 'none';
+            }
+
+            hideScheduleModal() {
+                document.getElementById('scheduleModal').style.display = 'none';
+            }
+
+            handleScheduleOptionClick(option) {
+                // Remove active class from all options
+                document.querySelectorAll('.schedule-option').forEach(opt => opt.classList.remove('active'));
+                // Add active class to clicked option
+                option.classList.add('active');
+                
+                // Show custom time input if custom is selected
+                if (option.dataset.time === 'custom') {
+                    document.getElementById('customTimeInput').style.display = 'block';
+                } else {
+                    document.getElementById('customTimeInput').style.display = 'none';
+                }
+            }
+
+            setReminder() {
+                const selectedOption = document.querySelector('.schedule-option.active');
+                if (!selectedOption) {
+                    this.showNotification('Please select a time', 'error');
+                    return;
+                }
+
+                const timeType = selectedOption.dataset.time;
+                let reminderTime;
+
+                if (timeType === 'custom') {
+                    const customTime = document.getElementById('customTime').value;
+                    if (!customTime) {
+                        this.showNotification('Please select a custom time', 'error');
+                        return;
+                    }
+                    reminderTime = customTime;
+                } else {
+                    // Set default times for each period
+                    const defaultTimes = {
+                        morning: '08:00',
+                        day: '12:00',
+                        afternoon: '15:00',
+                        evening: '18:00',
+                        night: '21:00'
+                    };
+                    reminderTime = defaultTimes[timeType];
+                }
+
+                this.createCalendarEvent(reminderTime);
+                this.hideScheduleModal();
+            }
+
+            createCalendarEvent(time) {
+                const now = new Date();
+                const [hours, minutes] = time.split(':');
+                const reminderDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(hours), parseInt(minutes));
+                
+                // If the time has already passed today, set for tomorrow
+                if (reminderDate < now) {
+                    reminderDate.setDate(reminderDate.getDate() + 1);
+                }
+
+                const formattedDate = reminderDate.toISOString().replace(/-|:|\.\d+/g, '');
+                
+                const verseText = `"${this.currentVerse.text}" - ${this.currentVerse.reference}`;
+                const description = `Share this verse: ${verseText}\n\n📖 Via VerseCurator App: https://mashifmj-prog.github.io/VerseCurator/`;
+                
+                // Create calendar event URL
+                const calendarUrl = [
+                    'BEGIN:VCALENDAR',
+                    'VERSION:2.0',
+                    'BEGIN:VEVENT',
+                    `DTSTART:${formattedDate}`,
+                    `DTEND:${formattedDate}`,
+                    `SUMMARY:Share Bible Verse - ${this.currentVerse.reference}`,
+                    `DESCRIPTION:${description.replace(/\n/g, '\\n')}`,
+                    'END:VEVENT',
+                    'END:VCALENDAR'
+                ].join('\n');
+                
+                const blob = new Blob([calendarUrl], { type: 'text/calendar;charset=utf-8' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'verse-reminder.ics';
+                link.click();
+                
+                this.showNotification('Reminder set! Check your calendar.');
             }
 
             // Preferences and Settings
@@ -2659,7 +2770,7 @@
             
             closeRatingModal() {
                 this.ratingModal.style.display = 'none';
-                document.getElementById('ratingComment').value = '';
+                document.getElementById('ratingCommentInput').value = '';
             }
             
             setRating(rating) {
@@ -2683,7 +2794,7 @@
                     return;
                 }
                 
-                const comment = document.getElementById('ratingComment').value;
+                const comment = document.getElementById('ratingCommentInput').value;
                 
                 // Save rating
                 this.stats.hasRated = true;
